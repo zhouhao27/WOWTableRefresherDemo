@@ -83,11 +83,11 @@ public class WOWRippleIndicator: UIView {
                 let animGroup = CAAnimationGroup()
                 animGroup.animations = [animScale,animAlpha]
                 animGroup.repeatCount = Float.infinity
-                animGroup.duration = 0.5
+                animGroup.duration = 0.8
                 circle.addAnimation(animGroup, forKey: "")
             })
             
-            delay += 0.1
+            delay += 0.2
         }
         
     }
@@ -128,7 +128,7 @@ public class WOWRippleIndicator: UIView {
         
         circle.fillColor = UIColor.clearColor().CGColor
         circle.strokeColor = UIColor.orangeColor().CGColor
-        circle.lineWidth = 5
+        circle.lineWidth = 2
         
         self.layer.addSublayer(circle)
         

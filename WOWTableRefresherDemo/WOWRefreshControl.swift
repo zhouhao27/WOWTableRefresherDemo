@@ -10,11 +10,13 @@ import UIKit
 
 public class WOWRefreshControl: UIRefreshControl {
 
+    let kIndicatorWidth : CGFloat = 40.0
+    
     public typealias CompletionHandler = () -> Void
     
     public var completionHandler : CompletionHandler?
     private var refreshLoadingView : UIView!
-    private var rippleIndicator : WOWRippleIndicator!
+    private var rippleIndicator : WOWRippleIndicator?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init()
@@ -47,30 +49,35 @@ public class WOWRefreshControl: UIRefreshControl {
         refreshLoadingView = UIView()
         addSubview(refreshLoadingView)
         refreshLoadingView.backgroundColor = UIColor.lightGrayColor()
-        
-        rippleIndicator = WOWRippleIndicator()
-        rippleIndicator.bounds = CGRect(origin: CGPointZero, size: CGSizeMake(40, 40))
-        rippleIndicator.backgroundColor = UIColor.clearColor()
-        rippleIndicator.alpha = 0
-        rippleIndicator.degree = 0
-        refreshLoadingView.addSubview(rippleIndicator)
-
     }
     
     func onReadyToRefresh() {
         
-        print("refresh bounds = \(self.bounds)")
-        
-//        let formatter = NSDateFormatter()
-//        formatter.dateFormat = "MMM d, h:mm a"
-//
-//        let title = String("Last update: \(formatter.stringFromDate(NSDate()))")
-//        let attributedTitle = NSAttributedString(string: title)
-//        self.attributedTitle = attributedTitle;
-        
-        rippleIndicator.startAnimation()
+        if rippleIndicator != nil {
+            rippleIndicator!.startAnimation()
+        }
         if completionHandler != nil {
             completionHandler!()
+        }
+    }
+    
+    func createIndicator() {
+
+        if rippleIndicator == nil {
+            rippleIndicator = WOWRippleIndicator()
+            rippleIndicator!.bounds = CGRect(origin: CGPointZero, size: CGSizeMake(kIndicatorWidth, kIndicatorWidth))
+            rippleIndicator!.backgroundColor = UIColor.clearColor()
+            rippleIndicator!.degree = 0
+            refreshLoadingView.addSubview(rippleIndicator!)
+        }
+    }
+    
+    func removeIndicator() {
+        
+        if rippleIndicator != nil {
+            
+            rippleIndicator!.removeFromSuperview()
+            rippleIndicator = nil
         }
     }
     
@@ -82,34 +89,36 @@ public class WOWRefreshControl: UIRefreshControl {
         // Set the encompassing view's frames
         refreshBounds.size.height = pullDistance;
         refreshLoadingView.frame = refreshBounds;
-        
-        if pullDistance >= rippleIndicator.bounds.height {
+                
+        if pullDistance >= kIndicatorWidth {
 
-            let center = CGPointMake(refreshLoadingView.center.x - rippleIndicator.bounds.width / 2, refreshLoadingView.center.y - rippleIndicator.bounds.height / 2)
-            rippleIndicator.frame = CGRect(origin: center, size: rippleIndicator.bounds.size)
+            createIndicator()
+
+            let center = CGPointMake(refreshLoadingView.center.x - kIndicatorWidth / 2, refreshLoadingView.center.y - kIndicatorWidth / 2)
+            rippleIndicator!.frame = CGRect(origin: center, size: rippleIndicator!.bounds.size)
             
-            let value = (pullDistance - rippleIndicator.bounds.size.height) / rippleIndicator.bounds.size.height
+            let value = (pullDistance - kIndicatorWidth) / kIndicatorWidth
             let percentage = min(1,value)
             
-            rippleIndicator.alpha = percentage
-            rippleIndicator.degree = percentage
+            rippleIndicator!.degree = percentage
+            
+            if refreshing {
+                rippleIndicator!.degree = 0
+            }
             
         } else {
             
-            rippleIndicator.alpha = 0
-            rippleIndicator.degree = 0
+            // remove
+            removeIndicator()
         }
         
-        if refreshing {
-            rippleIndicator.alpha = 1
-            rippleIndicator.degree = 0
-        }
     }
     
     public func stopRefresh() {
-        
         self.endRefreshing()
-        self.rippleIndicator.stopAnimation()
+        if rippleIndicator != nil {
+            rippleIndicator!.stopAnimation()
+        }
     }
     
 }
