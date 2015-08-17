@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = "This is a title"
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
     
@@ -80,6 +80,15 @@ class ViewController: UIViewController {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)));
         dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
 
+            self.data.append("Hello")
+            self.data.append("Good")
+            self.data.append("Nice")
+            self.data.append("That")
+            self.data.append("This")
+            self.data.append("Data")
+            self.data.append("Get")
+            self.data.append("Time")
+            
             self.tableView.reloadData()
             self.refreshControl.stopRefresh()
         }
