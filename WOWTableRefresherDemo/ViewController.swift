@@ -33,6 +33,9 @@ class ViewController: UIViewController {
             // ready to refresh
             self.reloadData()
         })
+        refreshControl.lineWidth = 5
+        refreshControl.lineColor = UIColor.blueColor()
+        refreshControl.backgroundColor = UIColor.yellowColor()
         
         self.tableView.addSubview(refreshControl)
         self.tableView.sendSubviewToBack(refreshControl)

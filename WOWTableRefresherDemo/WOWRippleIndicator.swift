@@ -10,9 +10,11 @@ import UIKit
 
 public class WOWRippleIndicator: UIView {
 
+    // local properties
     var ripples = [CAShapeLayer]()
     var ring : CAShapeLayer!
     
+    // MARK: override properties
     override public var bounds : CGRect {
         didSet {
 
@@ -23,8 +25,8 @@ public class WOWRippleIndicator: UIView {
             
             ring.frame = layer.bounds
             ring.fillColor = UIColor.clearColor().CGColor
-            ring.strokeColor = UIColor.orangeColor().CGColor
-            ring.lineWidth = 5
+            ring.strokeColor = rippleColor.CGColor
+            ring.lineWidth = rippleLineWidth
             
             let radius = layer.bounds.width / 2
             let center = CGPointMake(radius, radius)
@@ -33,20 +35,26 @@ public class WOWRippleIndicator: UIView {
         }
     }
     
+    // public properties
     public var degree : CGFloat = 0 {
         
         didSet {
-            
-            print("degree = \(degree)")
             ring.strokeEnd = degree
-            
-//            let animateStrokeDown = CABasicAnimation(keyPath: "strokeEnd")
-//            animateStrokeDown.fromValue = oldValue
-//            animateStrokeDown.toValue = degree
-//            circle.addAnimation(animateStrokeDown, forKey: "stroke")
         }
     }
     
+    public var rippleColor : UIColor = UIColor.blackColor() {
+        didSet {
+            ring.strokeColor = rippleColor.CGColor
+        }
+    }
+    public var rippleLineWidth : CGFloat = 2.0 {
+        didSet {
+            ring.lineWidth = rippleLineWidth
+        }
+    }
+    
+    // MARK: view life circle
     required public init?(coder aDecoder: NSCoder) {
         super.init(frame: CGRectZero)
         setup()
@@ -57,6 +65,7 @@ public class WOWRippleIndicator: UIView {
         setup()
     }
     
+    // MARK: public methods
     public func startAnimation() {
         
         setupRipples()
@@ -99,6 +108,7 @@ public class WOWRippleIndicator: UIView {
         }
     }
     
+    // MARK: private methods
     private func setup() {
         
         ring = CAShapeLayer()
@@ -127,8 +137,8 @@ public class WOWRippleIndicator: UIView {
         circle.frame = layer.bounds
         
         circle.fillColor = UIColor.clearColor().CGColor
-        circle.strokeColor = UIColor.orangeColor().CGColor
-        circle.lineWidth = 2
+        circle.strokeColor = rippleColor.CGColor
+        circle.lineWidth = rippleLineWidth
         
         self.layer.addSublayer(circle)
         
