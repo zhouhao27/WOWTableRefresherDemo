@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		386AAEC51B846BA3006E3828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386AAEC41B846BA3006E3828 /* ViewController.swift */; };
+		386AAEC71B846C3B006E3828 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386AAEC61B846C3B006E3828 /* CollectionViewController.swift */; };
+		386AAEC91B846F8C006E3828 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386AAEC81B846F8C006E3828 /* CollectionCell.swift */; };
 		38C0AE561B819B5C00CD01F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0AE551B819B5C00CD01F7 /* AppDelegate.swift */; };
-		38C0AE581B819B5C00CD01F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0AE571B819B5C00CD01F7 /* ViewController.swift */; };
+		38C0AE581B819B5C00CD01F7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0AE571B819B5C00CD01F7 /* TableViewController.swift */; };
 		38C0AE5B1B819B5C00CD01F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C0AE591B819B5C00CD01F7 /* Main.storyboard */; };
 		38C0AE5D1B819B5C00CD01F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C0AE5C1B819B5C00CD01F7 /* Assets.xcassets */; };
 		38C0AE601B819B5C00CD01F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C0AE5E1B819B5C00CD01F7 /* LaunchScreen.storyboard */; };
@@ -18,9 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		386AAEC41B846BA3006E3828 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		386AAEC61B846C3B006E3828 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		386AAEC81B846F8C006E3828 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		38C0AE521B819B5C00CD01F7 /* WOWTableRefresherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOWTableRefresherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C0AE551B819B5C00CD01F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38C0AE571B819B5C00CD01F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38C0AE571B819B5C00CD01F7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		38C0AE5A1B819B5C00CD01F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38C0AE5C1B819B5C00CD01F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38C0AE5F1B819B5C00CD01F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,13 +68,16 @@
 			children = (
 				38C0AE6D1B81CB5E00CD01F7 /* GCD.swift */,
 				38C0AE551B819B5C00CD01F7 /* AppDelegate.swift */,
-				38C0AE571B819B5C00CD01F7 /* ViewController.swift */,
+				38C0AE571B819B5C00CD01F7 /* TableViewController.swift */,
 				38C0AE591B819B5C00CD01F7 /* Main.storyboard */,
 				38C0AE5C1B819B5C00CD01F7 /* Assets.xcassets */,
 				38C0AE5E1B819B5C00CD01F7 /* LaunchScreen.storyboard */,
 				38C0AE611B819B5C00CD01F7 /* Info.plist */,
+				386AAEC81B846F8C006E3828 /* CollectionCell.swift */,
 				38C0AE691B81A03300CD01F7 /* WOWRefreshControl.swift */,
 				38C0AE6B1B81B6C900CD01F7 /* WOWRippleIndicator.swift */,
+				386AAEC41B846BA3006E3828 /* ViewController.swift */,
+				386AAEC61B846C3B006E3828 /* CollectionViewController.swift */,
 			);
 			path = WOWTableRefresherDemo;
 			sourceTree = "<group>";
@@ -143,10 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386AAEC51B846BA3006E3828 /* ViewController.swift in Sources */,
 				38C0AE6E1B81CB5E00CD01F7 /* GCD.swift in Sources */,
 				38C0AE6A1B81A03300CD01F7 /* WOWRefreshControl.swift in Sources */,
+				386AAEC91B846F8C006E3828 /* CollectionCell.swift in Sources */,
 				38C0AE6C1B81B6C900CD01F7 /* WOWRippleIndicator.swift in Sources */,
-				38C0AE581B819B5C00CD01F7 /* ViewController.swift in Sources */,
+				386AAEC71B846C3B006E3828 /* CollectionViewController.swift in Sources */,
+				38C0AE581B819B5C00CD01F7 /* TableViewController.swift in Sources */,
 				38C0AE561B819B5C00CD01F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +307,7 @@
 				38C0AE661B819B5C00CD01F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
